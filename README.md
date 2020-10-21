@@ -1,20 +1,15 @@
->📋  A template README.md for code accompanying a Machine Learning paper
+# Bayesian Causal Structural Learning with Zero-Inflated Poisson Bayesian Networks
 
-# My Paper Title
-
-This repository is the official implementation of [My Paper Title](https://arxiv.org/abs/2030.12345). 
-
->📋  Optional: include a graphic explaining your approach/main result, bibtex entry, link to demos, blog posts and tutorials
+This repository contains the implementation of a zero-inflated Poisson Bayesian network (ZIPBN) proposed by "Bayesian Causal Structural Learning with Zero-Inflated Poisson Bayesian Networks" by Junsouk Choi, Robert Chapkin, and Yang Ni. Specifically, our code in this repository will reproduce the results corresponding to Table 2 in the paper. We hope that the provided code is helpful to give a complete description of the procedure we did. 
 
 ## Requirements
 
-To install requirements:
+Our implemenation requires some dependencies. Please run the following codes to the dependencies:
 
-```setup
-pip install -r requirements.txt
+``` r
+pkgs <- c("igraph", "pscl", "glmnet", "MXM", "foreach", "doParallel", "doRNG")
+sapply(pkgs, install.packages, character.only = TRUE)
 ```
-
->📋  Describe how to set up the environment, e.g. pip/conda/docker commands, download datasets, etc...
 
 ## Training
 
@@ -55,8 +50,3 @@ Our model achieves the following performance on :
 | My awesome model   |     85%         |      95%       |
 
 >📋  Include a table of results from your paper, and link back to the leaderboard for clarity and context. If your main result is a figure, include that figure and link to the command or notebook to reproduce it. 
-
-
-## Contributing
-
->📋  Pick a licence and describe how to contribute to your code repository. 
