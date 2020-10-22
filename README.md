@@ -39,4 +39,4 @@ The operating characteristics over 30 simulations for zero-inflated scenarios ha
 <img src="./figures/zeros-75pct.png" width="80%"/>
 </p>
 
-Observe that ZIPBN clearly outperforms ODS and MRS in both cases. As the percentage of zeros increased from ~25% (a) to ~75% (b), the overall performance of ZIPBN did not deteriorate much while FDR of MRS was doubled.
+Observe that ZIPBN clearly outperforms ODS and MRS in both cases. As the percentage of zeros increased from (a) ~25% to (b) ~75% , the overall performance of ZIPBN did not deteriorate much while FDR of MRS was doubled.
