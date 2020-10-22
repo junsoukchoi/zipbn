@@ -76,8 +76,10 @@ for (iter in 1 : n_sim)
 }
 
 # visualize the simulation results
+png(file = "figures/zeros-25pct.png", width = 800, height = 400)
 par(mfrow = c(1, 3), oma = c(0, 0, 2, 0))
 boxplot(ZIPBN$TPR, ODS$TPR, MRS$TPR, main = "TPR")
 boxplot(ZIPBN$FDR, ODS$FDR, MRS$FDR, main = "FDR")
 boxplot(ZIPBN$MCC, ODS$MCC, MRS$MCC, main = "MCC")
-mtext("Simulations with ~25% zeros", outer = TRUE, cex = 1.2)
+mtext("(a) Simulations with ~25% zeros", outer = TRUE, cex = 1.2)
+dev.off()
