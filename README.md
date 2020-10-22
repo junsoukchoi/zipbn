@@ -1,6 +1,6 @@
 # Bayesian Causal Structural Learning with Zero-Inflated Poisson Bayesian Networks
 
-This repository contains the implementation of a zero-inflated Poisson Bayesian network (ZIPBN) proposed by "Bayesian Causal Structural Learning with Zero-Inflated Poisson Bayesian Networks" by Junsouk Choi, Robert Chapkin, and Yang Ni. Specifically, our code in this repository will reproduce the results corresponding to Table 2 in the paper. We hope that the provided code is helpful to give a complete description of the procedure we did. 
+This repository contains the implementation of a zero-inflated Poisson Bayesian network (ZIPBN) proposed by "Bayesian Causal Structural Learning with Zero-Inflated Poisson Bayesian Networks" by Junsouk Choi, Robert Chapkin, and Yang Ni. Specifically, our code in this repository will reproduce the simulation results corresponding to Table 2 in the paper. We hope that the provided code is helpful to give a detailed description of the procedure we did. 
 
 ## Requirements
 
@@ -13,40 +13,30 @@ sapply(pkgs, install.packages, character.only = TRUE)
 
 ## Training
 
-To train the model(s) in the paper, run this command:
+The `training` subdirectory contains training scripts that are used to perform simulations under different percentages of zeros in the paper (see Table 2).
 
-```train
-python train.py --input-data <path_to_data> --alpha 10 --beta 20
-```
-
->📋  Describe how to train the models, with example commands on how to train the models in your paper, including the full training procedure and appropriate hyperparameters.
-
-## Evaluation
-
-To evaluate my model on ImageNet, run:
-
-```eval
-python eval.py --model-file mymodel.pth --benchmark imagenet
-```
-
->📋  Describe how to evaluate the trained models on benchmarks reported in the paper, give commands that produce the results (section below).
+* `ZIPBNfunctions.R` includes functions needed to implement the parallel-tempered Markov chain Monte Carlo (MCMC) algorithm for ZIPBN that is described in the paper.
+* `zipbn_zero25pct.R` and `zipbn_zero75pct.R` implement our parallel-tempered MCMC algorithm and run  it on simulations with ~25% and ~75% zeros, respectively.
+* `ods_zero25pct.R` and `ods_zero75pct.R` implement ODS algorithm of [Park &  Raskutti, 2015](https://papers.nips.cc/paper/5896-learning-large-scale-poisson-dag-models-based-on-overdispersion-scoring.pdf) and run it on simulations with ~25% and ~75% zeros, respectively.
+* `mrs_zero25pct.R` and `mrs_zero75pct.R` implement MRS algorithm of [Park & Park, 2019](http://proceedings.mlr.press/v89/park19a/park19a.pdf) and run it on simulations with ~25% and ~75% zeros, respectively.
 
 ## Pre-trained Models
 
-You can download pretrained models here:
+The `pre-trained` subdirectory stores simulation results which can be obtained by running our code in the `training/` subdirectory. These results are saved in .RData file format.
 
-- [My awesome model](https://drive.google.com/mymodel.pth) trained on ImageNet using parameters x,y,z. 
+## Evaluation
 
->📋  Give a link to where/how the pretrained models can be downloaded and how they were trained (if applicable).  Alternatively you can have an additional column in your results table with a link to the models.
+In the `evaluation/` subdirectory, `eval_zero25pct.R` and `eval_zero75pct.R` evaluate ZIPBN by calculating the operating characteristics (TPR, FDR, and MCC) for simulations with different percentages of zeros (~25% vs. ~75%). 
+They produce boxplots of the calculated operating characteristics, which are equivalent to the results in Table 2.
+You can run `eval_zero25pct.R` and `eval_zero75pct.R` with the pre-trained models on simulations (`pre-trained/`), with appropriate specification of filepaths. 
 
 ## Results
 
-Our model achieves the following performance on :
+The operating characteristics over 30 simulations for zero-inflated scenarios having ~25% and ~75% zeros are summarized in the boxplots below. These boxplots and Table 2 (in the paper) are based on the same results.
 
-### [Image Classification on ImageNet](https://paperswithcode.com/sota/image-classification-on-imagenet)
+<p align="center">
+<img src="./figures/zeros-25pct.png" width="80%"/>
+<img src="./figures/zeros-75pct.png" width="80%"/>
+</p>
 
-| Model name         | Top 1 Accuracy  | Top 5 Accuracy |
-| ------------------ |---------------- | -------------- |
-| My awesome model   |     85%         |      95%       |
-
->📋  Include a table of results from your paper, and link back to the leaderboard for clarity and context. If your main result is a figure, include that figure and link to the command or notebook to reproduce it. 
+Observe that ZIPBN clearly outperforms ODS and MRS in both cases. As the percentage of zeros increased from ~25% (a) to ~75% (b), the overall performance of ZIPBN did not deteriorate much while FDR of MRS was doubled.
