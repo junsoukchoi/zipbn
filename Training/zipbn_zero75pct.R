@@ -87,12 +87,12 @@ zipbn = foreach(rep = 1 : n_rep, .packages = c("igraph", "pscl")) %dorng%
    for (m in 1 : n_chains)
    {
       tuning[[m]] = list()
-      tuning[[m]]$sigma_alpha = 0.7  * 2^((m - 1) / (n_chains - 1))
-      tuning[[m]]$sigma_beta  = 0.7  * 2^((m - 1) / (n_chains - 1))
-      tuning[[m]]$sigma_delta = 0.3  * 2^((m - 1) / (n_chains - 1))
+      tuning[[m]]$sigma_alpha = 0.6  * 2^((m - 1) / (n_chains - 1))
+      tuning[[m]]$sigma_beta  = 0.6  * 2^((m - 1) / (n_chains - 1))
+      tuning[[m]]$sigma_delta = 0.25  * 2^((m - 1) / (n_chains - 1))
       tuning[[m]]$sigma_gamma = 0.15 * 2^((m - 1) / (n_chains - 1))
-      tuning[[m]]$sigma_E     = c(0.05, 0.05, 0.3, 0.15)
-      tuning[[m]]$sigma_E_rev = c(0.5, 0.5, 0.6, 0.3) 
+      tuning[[m]]$sigma_E     = c(0.05, 0.05, 0.25, 0.15)
+      tuning[[m]]$sigma_E_rev = c(0.5, 0.5, 0.5, 0.3) 
    }
    
    # starting values for MCMC
@@ -189,5 +189,5 @@ zipbn = foreach(rep = 1 : n_rep, .packages = c("igraph", "pscl")) %dorng%
 }
 
 # save simulation results
-save(zipbn, E_true, alpha_true, beta_true, delta_true, gamma_true, file = "zipbn_z75.RData")
+save(zipbn, E_true, alpha_true, beta_true, delta_true, gamma_true, file = "zipbn_z75_1.RData")
 
