@@ -32,7 +32,7 @@ You can run `eval_zero25pct.R` and `eval_zero75pct.R` with the pre-trained model
 
 ## Results
 
-The operating characteristics over 30 simulations for zero-inflated scenarios having ~25% and ~75% zeros are summarized in the boxplots below. These boxplots and Table 2 (in the paper) are based on the same results.
+The operating characteristics over 30 simulations for zero-inflated scenarios having ~25% and ~75% zeros are summarized in the boxplots below. Table 2 in the paper and the boxplots below are indeed based on the same results.
 
 <p align="center">
 <img src="./figures/zeros-25pct.png" width="80%"/>
