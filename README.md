@@ -26,13 +26,11 @@ The `pre-trained` subdirectory stores simulation results which can be obtained b
 
 ## Evaluation
 
-In the `evaluation/` subdirectory, `eval_zero25pct.R` and `eval_zero75pct.R` evaluate ZIPBN by calculating the operating characteristics (TPR, FDR, and MCC) for simulations with different percentages of zeros (~25% vs. ~75%). 
-They produce boxplots of the calculated operating characteristics, which are equivalent to the results in Table 2.
-You can run `eval_zero25pct.R` and `eval_zero75pct.R` with the pre-trained models on simulations (`pre-trained/`), with appropriate specification of filepaths. 
+In the `evaluation/` subdirectory, `eval_zero25pct.R` and `eval_zero75pct.R` evaluate ZIPBN by calculating the operating characteristics (TPR, FDR, and MCC) for simulations with different percentages of zeros (~25% vs. ~75%). They produce boxplots of the calculated operating characteristics, which are equivalent to the results in Table 2. You can run `eval_zero25pct.R` and `eval_zero75pct.R` with the pre-trained models on simulations (`pre-trained/`), with appropriate specification of filepaths. 
 
 ## Results
 
-The operating characteristics over 30 simulations for zero-inflated scenarios having ~25% and ~75% zeros are summarized in the boxplots below. These boxplots and Table 2 (in the paper) are based on the same results.
+The operating characteristics over 30 simulations for zero-inflated scenarios having ~25% and ~75% zeros are summarized in the boxplots below. Table 2 in the paper and the boxplots below are indeed based on the same results.
 
 <p align="center">
 <img src="./figures/zeros-25pct.png" width="80%"/>
