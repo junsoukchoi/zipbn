@@ -7,7 +7,7 @@ This repository contains the implementation of a zero-inflated Poisson Bayesian 
 Our implemenation requires some dependencies. Please run the following codes to the dependencies:
 
 ``` r
-pkgs <- c("igraph", "pscl", "glmnet", "MXM", "foreach", "doParallel", "doRNG")
+pkgs <- c("igraph", "pscl", "glmnet", "MXM", "foreach", "doParallel", "doRNG", "ggplot2", "ggpubr")
 sapply(pkgs, install.packages, character.only = TRUE)
 ```
 
@@ -17,8 +17,8 @@ The `training` subdirectory contains training scripts that are used to perform s
 
 * `ZIPBNfunctions.R` includes functions needed to implement the parallel-tempered Markov chain Monte Carlo (MCMC) algorithm for ZIPBN that is described in the paper.
 * `zipbn_zero25pct.R` and `zipbn_zero75pct.R` implement our parallel-tempered MCMC algorithm and run  it on simulations with ~25% and ~75% zeros, respectively.
-* `ods_zero25pct.R` and `ods_zero75pct.R` implement ODS algorithm of [Park &  Raskutti, 2015](https://papers.nips.cc/paper/5896-learning-large-scale-poisson-dag-models-based-on-overdispersion-scoring.pdf) and run it on simulations with ~25% and ~75% zeros, respectively.
-* `mrs_zero25pct.R` and `mrs_zero75pct.R` implement MRS algorithm of [Park & Park, 2019](http://proceedings.mlr.press/v89/park19a/park19a.pdf) and run it on simulations with ~25% and ~75% zeros, respectively.
+* `ods_zero25pct.R` and `ods_zero75pct.R` implement the OverDispersion Scoring (ODS) algorithm of [Park &  Raskutti, 2015](https://papers.nips.cc/paper/5896-learning-large-scale-poisson-dag-models-based-on-overdispersion-scoring.pdf) and run it on simulations with ~25% and ~75% zeros, respectively.
+* `mrs_zero25pct.R` and `mrs_zero75pct.R` implement the Moment Ratio Scoring (MRS) algorithm of [Park & Park, 2019](http://proceedings.mlr.press/v89/park19a/park19a.pdf) and run it on simulations with ~25% and ~75% zeros, respectively.
 
 ## Pre-trained Models
 
@@ -39,4 +39,4 @@ The operating characteristics over 30 simulations for zero-inflated scenarios ha
 <img src="./figures/zeros-75pct.png" width="80%"/>
 </p>
 
-Observe that ZIPBN clearly outperforms ODS and MRS in both cases. As the percentage of zeros increased from ~25% (a) to ~75% (b), the overall performance of ZIPBN did not deteriorate much while FDR of MRS was doubled.
+ZIPBN clearly outperformed ODS and MRS in both cases. As the percentage of zeros increased from (a) ~25% to (b) ~75%, the overall performance of ZIPBN did not deteriorate much,  whereas FDR of MRS was doubled. As MRS and ODS are not aimed to accommodate the zero-inflation, they did not work well in the simulations with excessive zeros.
